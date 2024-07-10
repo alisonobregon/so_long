@@ -15,9 +15,21 @@
 
 void read_map(t_complete game, char *argv)
 {
+	int	fd;
+	char	*mapread;
+	char	readed;
 	game -> fd = open(argv , O_RDONLY);
 	if( game -> fd < 0)
 		perror("Error reconociendo el archivo");
+	mapread =  (char *)calloc(BUFFER_SIZE + 1, 1);
+	if(!mapread)
+		return (NULL); //dEVOLVER PERROR
+	readed = read(fd, mapread, BUFFER_SIZE);
+	if (readed == -1)
+		return(perror);
+	
+	
+	
 
 }
 
