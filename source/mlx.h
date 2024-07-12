@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   mlx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliobreg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 18:07:58 by aliobreg          #+#    #+#             */
-/*   Updated: 2024/07/09 16:33:53 by aliobreg         ###   ########.fr       */
+/*   Created: 2024/07/03 15:56:43 by aliobreg          #+#    #+#             */
+/*   Updated: 2024/07/03 16:04:56 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef MLX_H
+# define MLX_H
 
-#include <fcntl.h>
-#include "../minilibx-linux/mlx.h"
+void		*mlx_init();
+void		*mlx_new_window(void *mlx_ptr, int size_x, int size_y, 
+		char *title);
+int		mlx_clear_window(void *mlx_ptr, void *win_ptr);
 
-typedef struct s_vars
-{
-	void		*mlx;
-	void		*mlx_win;
-	t_complete	*game;
-}				t_vars;
-typedef struct s_game;
-{
-	int			fd;
-	int			widht;
-	int			height;
-	int			player_count;
-	int			column_count;
-	int			exit_count;
-	int			colections_count;
-	int			x_axis;
-	int			y_axis;
-	int			counter;
-	
-	char	**map;
-
-}			t_game;
-
+int		mlx_destroy_window(void *mlx_ptr, void *win_ptr);
+int		mlx_get_color_value(void *mlx_ptr, int color);
+int		mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y,
+	       	int color);
 #endif
