@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 bool verificity_ber(char *argv)
 {
 	char	*save;
@@ -28,6 +29,26 @@ void check_valid_map(t_game *game)
 	check_walls(&game);
 }
 
+int	ft_deal_key(int	key, t_vars *vars)´
+{
+	if (key == KEY_A || key == ARROW_LEFT)
+		ft_move_left(vars);
+	if (key == KEY_W || key == ARROW_UP)
+		ft_move_up(vars);
+	if (key == KEY_S || key == ARROW_DOWN)
+		ft_move_down(vars);
+	if (key == KEY_D || key == ARROW_RIGHT)
+		ft_move_right(vars);
+	if (key == KEY_ESC)
+	{
+		perror("Ha presionado ESC \n");
+		mlx_destroy_window(vars->mlx, vars->mlx_win);
+		exit (1);
+	}
+	return (0);
+}
+
+
 int main (int argc, char *argv[])
 {
 	t_vars	vars;
@@ -43,7 +64,9 @@ int main (int argc, char *argv[])
 		//ft_memset(&game, 0, sizeof(t_vars));
 		read_map(&game, argv[1]);
 		check_valid_map(&game);
-		init_game(&game);
+		init_game(&vars, &game);
+		mlx_key_hook(vars.mlx_win, ft_deal_key, &vars);
+
 	}
 
 }

@@ -120,7 +120,6 @@ void check_walls(t_game *game)
 				else if(game->map[y][0] != '1' 
 					|| game->map[y][game->map_x - 1] != '1')
 					perror("paredes invalidas");
-
             }
       }
 }
