@@ -66,6 +66,9 @@ int main (int argc, char *argv[])
 		check_valid_map(&game);
 		init_game(&vars, &game);
 		mlx_key_hook(vars.mlx_win, ft_deal_key, &vars);
+		mlx_loop_hook(vars.mlx, set_img, &vars);
+		mlx_loop(vars.mlx);
+		return (0);
 
 	}
 
